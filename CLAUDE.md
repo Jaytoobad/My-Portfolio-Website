@@ -11,6 +11,8 @@ React 18 + TypeScript + Vite, GSAP + ScrollTrigger, Three.js via React Three Fib
 - Represent skill levels honestly; no expert claims for tools still being learned.
 - Every animation needs a `prefers-reduced-motion` fallback. Use `useReducedMotion` and `useQualityTier` from `src/lib/motion.ts`. Animate transform/opacity only.
 - Lazy-load the 3D scenes. Low-power devices get fewer pixels and objects.
+- 3D only runs on hardware-accelerated WebGL (`detectGraphics` in `src/lib/motion.ts`); software renderers get the CSS fallback. Add `?3d=on` to the URL to force 3D when testing in headless browsers.
+- Fonts are self-hosted via `@fontsource` (no Google Fonts); critical ones are preloaded by `vite.config.ts`.
 - Do not deploy without explicit authorization.
 - Do not claim a feature works until it has been tested.
 

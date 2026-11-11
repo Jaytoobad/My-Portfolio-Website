@@ -51,3 +51,50 @@ export const useInView = (ref: { current: Element | null }, margin = "200px") =>
   }, [ref, margin]);
   return inView;
 };
+
+export type GraphicsTier = "none" | "software" | "hardware";
+
+let cachedTier: GraphicsTier | undefined;
+
+/**
+ * Detects whether WebGL is hardware accelerated. Software renderers (SwiftShader, llvmpipe) can block the
+ * main thread for seconds, so 3D scenes are skipped there. Add `?3d=on` to the URL to force 3D for testing.
+ */
+export const detectGraphics = (): GraphicsTier => {
+  if (cachedTier) return cachedTier;
+  try {
+    if (new URLSearchParams(window.location.search).get("3d") === "on") return (cachedTier = "hardware");
+    const canvas = document.createElement("canvas");
+    const gl = (canvas.getContext("webgl2") ?? canvas.getContext("webgl")) as WebGLRenderingContext | null;
+    if (!gl) return (cachedTier = "none");
+    const info = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : "";
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return (cachedTier = /swiftshader|llvmpipe|software|basic render/i.test(renderer) ? "software" : "hardware");
+  } catch {
+    return (cachedTier = "none");
+  }
+};
+
+export const useGraphics = (): GraphicsTier | null => {
+  const [tier, setTier] = useState<GraphicsTier | null>(null);
+  useEffect(() => setTier(detectGraphics()), []);
+  return tier;
+};
+
+/** Becomes true once the browser is idle after load, so heavy scenes never compete with first paint. */
+export const useIdleReady = (timeout = 1500) => {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const start = () => {
+      const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number })
+        .requestIdleCallback;
+      if (idle) idle(() => setReady(true), { timeout });
+      else window.setTimeout(() => setReady(true), 300);
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
+  }, [timeout]);
+  return ready;
+};

@@ -33,7 +33,7 @@ export const Statement = () => {
       const words = gsap.utils.toArray<HTMLElement>(".statement__word");
       gsap.fromTo(
         words,
-        { opacity: 0.14 },
+        { opacity: 0.5 },
         {
           opacity: 1,
           ease: "none",
@@ -75,12 +75,15 @@ export const Statement = () => {
               <em>website.</em>
             </span>
           </h2>
-          <p className="statement__text" aria-label={STATEMENT}>
-            {STATEMENT.split(" ").map((word, index) => (
-              <span key={`${word}-${index}`} className="statement__word" aria-hidden="true">
-                {word}{" "}
-              </span>
-            ))}
+          <p className="statement__text">
+            <span className="sr-only">{STATEMENT}</span>
+            <span aria-hidden="true">
+              {STATEMENT.split(" ").map((word, index) => (
+                <span key={`${word}-${index}`} className="statement__word">
+                  {word}{" "}
+                </span>
+              ))}
+            </span>
           </p>
         </div>
       </div>

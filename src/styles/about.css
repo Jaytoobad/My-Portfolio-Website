@@ -108,7 +108,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--bg);
-  background: var(--olive);
+  background: #8a9a47;
   padding: 0.2rem 0.55rem;
 }
 .stack__group[data-level="working"] .level {

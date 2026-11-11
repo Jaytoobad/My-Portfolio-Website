@@ -35,7 +35,7 @@ export const Nav = () => {
   return (
     <header className={`nav${scrolled ? " nav--scrolled" : ""}${open ? " nav--open" : ""}`}>
       <div className="container nav__inner">
-        <a className="nav__brand" href="#top" onClick={close} aria-label="Hezekiah Asare — back to top">
+        <a className="nav__brand" href="#top" onClick={close} aria-label="HA Hezekiah Asare">
           <span className="nav__mark">HA</span>
           <span className="nav__name">Hezekiah Asare</span>
         </a>

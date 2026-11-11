@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { gsap, useInView, useQualityTier, useReducedMotion } from "../lib/motion";
+import { gsap, useGraphics, useInView, useQualityTier, useReducedMotion } from "../lib/motion";
 import "../styles/lab.css";
 
 const LabGeometry = lazy(() => import("./lab/LabGeometry"));
@@ -64,6 +64,7 @@ export const MotionLab = () => {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const quality = useQualityTier();
+  const graphics = useGraphics();
 
   useLayoutEffect(() => {
     if (reduced) return;
@@ -105,7 +106,15 @@ export const MotionLab = () => {
               interaction: "Drag to orbit, click to pulse, switch between forms, or flip to wireframe.",
             }}
           >
-            {(active) => <LabGeometry reduced={reduced} quality={quality} active={active} />}
+            {(active) =>
+              graphics === "hardware" ? (
+                <LabGeometry reduced={reduced} quality={quality} active={active} />
+              ) : (
+                <div className="exp__stage exp__loading">
+                  3D needs a hardware-accelerated browser. It is switched off on this device.
+                </div>
+              )
+            }
           </Experiment>
 
           <Experiment

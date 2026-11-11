@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowDownRight, ArrowUpRight, MapPin } from "lucide-react";
-import { gsap, useQualityTier, useReducedMotion } from "../lib/motion";
+import { gsap, useGraphics, useIdleReady, useQualityTier, useReducedMotion } from "../lib/motion";
 import "../styles/hero.css";
 
 const HeroScene = lazy(() => import("./HeroScene"));
@@ -13,25 +13,14 @@ const HEADLINE: readonly (readonly Part[])[] = [
   [{ text: "experiences.", accent: true }],
 ];
 
-const hasWebGL = () => {
-  try {
-    const canvas = document.createElement("canvas");
-    return Boolean(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
-  } catch {
-    return false;
-  }
-};
-
 export const Hero = () => {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const quality = useQualityTier();
   const [visible, setVisible] = useState(true);
-  const [webgl, setWebgl] = useState(false);
-
-  useEffect(() => {
-    setWebgl(hasWebGL());
-  }, []);
+  const graphics = useGraphics();
+  const idle = useIdleReady();
+  const webgl = graphics === "hardware" && idle;
 
   // Pause rendering while the hero is off-screen.
   useEffect(() => {
@@ -51,8 +40,10 @@ export const Hero = () => {
       timeline
         .from(".hero__eyebrow", { opacity: 0, y: 12, duration: 0.9 }, 0.1)
         .from(".hero__line-inner", { yPercent: 115, duration: 1.3, stagger: 0.11 }, 0.2)
-        .from(".hero__intro, .hero__actions", { opacity: 0, y: 24, duration: 1, stagger: 0.12 }, 0.85)
-        .from(".hero__foot", { opacity: 0, duration: 1 }, 1.2);
+        // The intro paragraph is the largest text on first paint, so it slides in without fading from opacity 0.
+        .from(".hero__intro", { y: 24, duration: 0.8 }, 0.2)
+        .from(".hero__actions", { opacity: 0, y: 24, duration: 0.8 }, 0.35)
+        .from(".hero__foot", { opacity: 0, duration: 0.8 }, 0.8);
     }, root);
     return () => context.revert();
   }, [reduced]);

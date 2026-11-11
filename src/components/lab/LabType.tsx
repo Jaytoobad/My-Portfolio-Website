@@ -80,7 +80,8 @@ const LabType = ({ reduced, active }: Props) => {
         onPointerLeave={() => (pointer.current = null)}
         onPointerCancel={() => (pointer.current = null)}
       >
-        <p className="kinetic" aria-label={letters.join("")}>
+        <p className="kinetic">
+          <span className="sr-only">{letters.join("")}</span>
           {letters.map((letter, index) => (
             <span
               key={`${letter}-${index}`}
