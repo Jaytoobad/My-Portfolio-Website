@@ -36,3 +36,18 @@ export const useQualityTier = () => {
   useEffect(() => subscribeQuery("(max-width: 768px)", setNarrow), []);
   return coarse || narrow ? "low" : "high";
 };
+
+/** True while the referenced element is within `margin` of the viewport. Used to pause work off-screen. */
+export const useInView = (ref: { current: Element | null }, margin = "200px") => {
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry?.isIntersecting ?? false), {
+      rootMargin: margin,
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [ref, margin]);
+  return inView;
+};

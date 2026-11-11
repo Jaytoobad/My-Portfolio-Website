@@ -1,0 +1,116 @@
+.contact {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+.contact__glow {
+  position: absolute;
+  top: -260px;
+  left: -260px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 255, 46, 0.16), rgba(200, 255, 46, 0) 65%);
+  pointer-events: none;
+  will-change: transform;
+}
+.contact__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.contact__title {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(3.4rem, 11.5vw, 11rem);
+}
+.contact__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.contact__line > span {
+  display: block;
+}
+.contact__rest {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+.contact__text {
+  max-width: 34rem;
+  color: var(--warm);
+  opacity: 0.82;
+}
+.btn--disabled {
+  background: transparent;
+  color: var(--grey);
+  border-color: var(--line);
+  cursor: not-allowed;
+}
+.btn--disabled:hover {
+  background: transparent;
+  border-color: var(--line);
+}
+.contact__links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(1.5rem, 5vw, 5rem);
+  width: 100%;
+  max-width: 56rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.contact__links li > a,
+.contact__pending {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding-block: 1rem;
+  border-top: 1px solid var(--line);
+  transition: color 0.3s var(--ease-out), padding 0.3s var(--ease-out);
+}
+.contact__links li > a:hover {
+  color: var(--lime);
+  padding-left: 0.5rem;
+}
+.contact__value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.contact__pending {
+  color: var(--grey);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: clamp(4rem, 9vw, 8rem);
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+@media (max-width: 700px) {
+  .contact__links {
+    grid-template-columns: 1fr;
+  }
+}
