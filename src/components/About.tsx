@@ -139,6 +139,7 @@ export const About = () => {
           </div>
         </div>
 
+        <p className="eyebrow photos__label">Meet the Creator</p>
         <div className="photos">
           {PHOTOS.map((photo) => (
             <figure key={photo.src} className="photo">

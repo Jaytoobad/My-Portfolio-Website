@@ -152,6 +152,10 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(0.5rem, 2vw, 1.5rem);
   align-items: start;
+  margin-top: 1.25rem;
+}
+
+.photos__label {
   margin-top: clamp(3rem, 7vw, 6rem);
 }
 .photo {
