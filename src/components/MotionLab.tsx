@@ -30,9 +30,7 @@ const Experiment = ({ index, title, notes, children }: ExperimentProps) => {
   return (
     <article ref={ref} className="exp">
       <header className="exp__head">
-        <span className="eyebrow">
-          <b>{index}</b>Experiment
-        </span>
+        <span className="eyebrow">Experiment {index}</span>
         <h3 className="exp__title">{title}</h3>
       </header>
 
@@ -85,24 +83,22 @@ export const MotionLab = () => {
   return (
     <section id="lab" ref={root} className="section lab">
       <div className="container">
-        <p className="eyebrow">
-          <b>04</b>Motion Lab
-        </p>
+        <p className="eyebrow">Motion Lab</p>
         <h2 className="display lab__title">
           Things to <em>touch</em>, not just watch.
         </h2>
         <p className="lab__lede">
-          Four small experiments, each live and interactive. They run in your browser, pause when off-screen and calm
+          Four small experiments you can play with. They run in your browser, pause when you scroll past them and calm
           down if you prefer reduced motion.
         </p>
 
         <div className="lab__list">
           <Experiment
-            index="01"
+            index="1"
             title="Interactive 3D geometry"
             notes={{
-              concept: "A form that feels like an object on a plinth: dark metal, one lime light, and a surface you can change.",
-              tech: "Three.js through React Three Fiber, a physically based material, image-based lighting and orbit controls. Geometry detail drops on small screens.",
+              concept: "A shape that feels like an object on a stand: dark metal, one lime light, and a surface you can change.",
+              tech: "Three.js through React Three Fiber, a realistic metal material, environment lighting and orbit controls. The detail drops on small screens.",
               interaction: "Drag to orbit, click to pulse, switch between forms, or flip to wireframe.",
             }}
           >
@@ -111,18 +107,18 @@ export const MotionLab = () => {
                 <LabGeometry reduced={reduced} quality={quality} active={active} />
               ) : (
                 <div className="exp__stage exp__loading">
-                  3D needs a hardware-accelerated browser. It is switched off on this device.
+                  This one needs a graphics card, so it is switched off on this device.
                 </div>
               )
             }
           </Experiment>
 
           <Experiment
-            index="02"
+            index="2"
             title="Kinetic typography"
             notes={{
-              concept: "Type treated as material. Letters have weight and personality, and they get out of the way of your cursor.",
-              tech: "React, a requestAnimationFrame loop and transform-only updates with smoothing. No layout work per frame.",
+              concept: "Type as something you can handle. Letters have weight, and they move out of the way of your cursor.",
+              tech: "React, a requestAnimationFrame loop and smoothed transform updates, so nothing reflows while it runs.",
               interaction: "Move across the word, type your own, or switch to wave mode.",
             }}
           >
@@ -130,11 +126,11 @@ export const MotionLab = () => {
           </Experiment>
 
           <Experiment
-            index="03"
+            index="3"
             title="Generative particle field"
             notes={{
-              concept: "A fluid-like system with no fixed shape. Flow, drag and your input push it somewhere new each time.",
-              tech: "HTML canvas 2D with a sine-based flow field, velocity damping and trail fading. Particle count scales with device capability.",
+              concept: "A system with no fixed shape. Your movement pushes it somewhere new each time.",
+              tech: "HTML canvas with a flow field built from sine waves, damping and fading trails. Fewer particles on weaker devices.",
               interaction: "Move to steer, tap to burst, and swap between attract and repel.",
             }}
           >
@@ -142,11 +138,11 @@ export const MotionLab = () => {
           </Experiment>
 
           <Experiment
-            index="04"
+            index="4"
             title="Lottie identity reveal"
             notes={{
-              concept: "A monogram that draws itself, then lands a lime full stop. A small brand-motion moment.",
-              tech: "Lottie (Bodymovin JSON) rendered as SVG by lottie-web, with playback controlled from code. This is the same pipeline used for After Effects exports.",
+              concept: "A monogram that draws itself, then lands a lime full stop. A small moment of brand motion.",
+              tech: "Lottie (Bodymovin JSON) rendered as SVG by lottie-web, with playback controlled from code. It is the same format After Effects exports.",
               interaction: "Replay it, or scrub the timeline frame by frame.",
             }}
           >

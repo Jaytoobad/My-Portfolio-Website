@@ -1,0 +1,36 @@
+.totop {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--lime);
+  background: var(--bg);
+  color: var(--lime);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+}
+
+.totop--show {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.totop:hover {
+  background: var(--lime);
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .totop {
+    transition: none;
+    transform: none;
+  }
+}

@@ -27,15 +27,15 @@ const PHOTOS = [
 const APPROACH = [
   {
     title: "The idea is mine",
-    body: "I start with a point of view: who it's for, how it should feel, what it should say. This portfolio began as my own written creative brief, from the colours to the sections to the rules about honesty.",
+    body: "I start with who it's for, how it should feel and what it should say. This portfolio began as my own written brief, from the colours to the sections to the rules about honesty.",
   },
   {
     title: "AI is how I build faster",
-    body: "Claude and Kilo Code help me write, prototype and refactor quickly. I review what they produce and decide what stays.",
+    body: "Claude and Kilo Code help me write and prototype quickly. I read what they produce and decide what stays.",
   },
   {
     title: "Taste isn't automated",
-    body: "Choosing the typeface, the pacing, when to hold back and when to make something move. Those calls are human, and they're the part I care about most.",
+    body: "Picking the typeface, setting the pace, knowing when to hold back and when to make something move. Those calls are mine, and they're the part I care about most.",
   },
   {
     title: "Everything gets tested",
@@ -91,21 +91,19 @@ export const About = () => {
   return (
     <section id="about" ref={root} className="section about">
       <div className="container">
-        <p className="eyebrow">
-          <b>05</b>About
-        </p>
+        <p className="eyebrow">About</p>
         <div className="about__grid">
           <div className="about__col">
             <h2 className="display about__title">
-              A curious builder from Accra, growing into a <em>creative technologist.</em>
+              A curious builder from Accra, <em>still learning.</em>
             </h2>
             <p className="about__text">
-              Hi, I'm Hezekiah. I'm based in Ghana and currently serving at the Lands Commission, where I'm exposed to IT
-              operations and technology-related responsibilities.
+              Hi, I'm Hezekiah. I live in Accra and I'm currently serving at the Lands Commission, where I
+              get hands on with IT operations.
             </p>
             <p className="about__text">
-              Outside of that, I design and build websites and interactive experiences. I'm still growing as a creative
-              technologist, and I'd rather show that honestly than pretend to be further along.
+              Outside of that, I design and build websites. I'm still learning, and I'd rather be upfront about that than
+              pretend to be further along than I am.
             </p>
           </div>
 
@@ -126,7 +124,7 @@ export const About = () => {
               <ul className="facts">
                 <li>
                   <strong>Lands Commission</strong>
-                  <span>Currently serving · IT operations and technology-related responsibilities</span>
+                  <span>Currently serving, working with IT operations</span>
                 </li>
               </ul>
             </div>
@@ -160,13 +158,12 @@ export const About = () => {
           <div className="approach__head">
             <p className="eyebrow">How I work</p>
             <h3 className="display approach__title">
-              AI-assisted. <em>Human-directed.</em>
+              Built with AI. <em>Directed by me.</em>
             </h3>
           </div>
           <ol className="approach__list">
-            {APPROACH.map((item, index) => (
+            {APPROACH.map((item) => (
               <li key={item.title} className="approach__item">
-                <span className="approach__num">{String(index + 1).padStart(2, "0")}</span>
                 <h4>{item.title}</h4>
                 <p>{item.body}</p>
               </li>

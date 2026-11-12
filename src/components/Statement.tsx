@@ -3,13 +3,13 @@ import { gsap, useReducedMotion } from "../lib/motion";
 import "../styles/statement.css";
 
 const STATEMENT =
-  "A website is more than a page. Design decides how it feels, technology decides how it behaves, interaction invites people in, and story gives them a reason to stay. I build at that intersection, shaping ideas into experiences that are considered, fast and alive. I use AI to build faster, but the ideas, the taste and the decisions are mine.";
+  "Most websites look fine and say nothing. I want mine to feel like someone made them on purpose. Design sets the mood, code makes it work, motion makes it feel alive, and the story is what people remember. I use AI to build faster, but the ideas, the taste and the calls are mine.";
 
 const PILLARS = [
-  { name: "Design", body: "Typography, space and light that give an idea a point of view." },
-  { name: "Technology", body: "React, TypeScript and the web platform, built to be fast and maintainable." },
-  { name: "Interaction", body: "Motion and input that respond to the visitor instead of just decorating." },
-  { name: "Storytelling", body: "Sequence and pacing that guide people through the work." },
+  { name: "Design", body: "How it looks and feels: type, space, colour and light." },
+  { name: "Technology", body: "React, TypeScript and the web platform, built to be fast and easy to maintain." },
+  { name: "Interaction", body: "Motion and input that respond to the visitor instead of just decorating the page." },
+  { name: "Storytelling", body: "The order things appear in, and the pace, so people are led through the work." },
 ] as const;
 
 export const Statement = () => {
@@ -65,7 +65,7 @@ export const Statement = () => {
       <div className="statement__pin">
         <div className="container statement__inner">
           <p className="eyebrow">
-            <b>02</b>Creative statement
+            Creative statement
           </p>
           <h2 className="display statement__title" aria-label="Not just another website.">
             <span className="statement__a" aria-hidden="true">
@@ -90,9 +90,8 @@ export const Statement = () => {
 
       <div className="container">
         <ol className="pillars">
-          {PILLARS.map((pillar, index) => (
+          {PILLARS.map((pillar) => (
             <li key={pillar.name} className="pillar">
-              <span className="eyebrow">0{index + 1}</span>
               <h3>{pillar.name}</h3>
               <p>{pillar.body}</p>
             </li>

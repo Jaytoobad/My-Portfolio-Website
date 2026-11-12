@@ -6,6 +6,7 @@ import { MotionLab } from "./components/MotionLab";
 import { About } from "./components/About";
 import { Stack } from "./components/Stack";
 import { Contact } from "./components/Contact";
+import { BackToTop } from "./components/BackToTop";
 
 export const App = () => (
   <>
@@ -22,5 +23,6 @@ export const App = () => (
       <Stack />
       <Contact />
     </main>
+    <BackToTop />
   </>
 );

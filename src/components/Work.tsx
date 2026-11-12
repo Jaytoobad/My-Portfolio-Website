@@ -52,19 +52,18 @@ export const Work = () => {
       <div className="container">
         <header className="work__head">
           <p className="eyebrow">
-            <b>03</b>Selected work
+            Selected work
           </p>
           <h2 className="display work__title">
-            Real sites, <em>real</em> workflows.
+            What I&rsquo;ve built <em>so far.</em>
           </h2>
         </header>
 
         <ol className="projects">
-          {PROJECTS.map((project, index) => {
+          {PROJECTS.map((project) => {
             const hasStudy = Boolean(project.caseStudy);
             return (
               <li key={project.slug} className="project">
-                <span className="project__index">0{index + 1}</span>
 
                 <div className="project__main">
                   <h3 className="display project__name">{project.name}</h3>

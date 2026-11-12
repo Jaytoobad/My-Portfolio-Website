@@ -62,7 +62,6 @@ export const Hero = () => {
 
       <div className="container hero__content">
         <p className="eyebrow hero__eyebrow">
-          <b>01</b>
           Creative Developer
           <span className="hero__place">
             <MapPin size={13} aria-hidden="true" /> Accra, Ghana
@@ -82,8 +81,8 @@ export const Hero = () => {
         </h1>
 
         <p className="hero__intro">
-          I&rsquo;m Hezekiah Asare &mdash; a creative developer exploring the intersection of thoughtful design,
-          modern web technology and AI-assisted creation.
+          I&rsquo;m Hezekiah Asare, a creative developer exploring the space between thoughtful design, modern
+          web technology and creating with AI.
         </p>
 
         <div className="hero__actions">
@@ -98,8 +97,8 @@ export const Hero = () => {
 
       <div className="container hero__foot">
         <span className="eyebrow">Web development</span>
-        <span className="eyebrow">Motion &amp; interaction</span>
-        <span className="eyebrow">AI-assisted workflows</span>
+        <span className="eyebrow">Motion and interaction</span>
+        <span className="eyebrow">Building with AI</span>
         <span className="eyebrow hero__scroll">
           Scroll <i aria-hidden="true" />
         </span>

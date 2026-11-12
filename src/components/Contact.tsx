@@ -1,18 +1,43 @@
-import { useLayoutEffect, useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ArrowUpRight, Check, Copy } from "lucide-react";
 import { gsap, useCoarsePointer, useReducedMotion } from "../lib/motion";
 import { CONTACT } from "../content/profile";
 import "../styles/contact.css";
 
 const HEADLINE = ["Let's make", "something", "matter."] as const;
 
+const useAccraTime = () => {
+  const [time, setTime] = useState("");
+  useEffect(() => {
+    const format = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Africa/Accra" });
+    const tick = () => setTime(format.format(new Date()));
+    tick();
+    const id = window.setInterval(tick, 30000);
+    return () => window.clearInterval(id);
+  }, []);
+  return time;
+};
+
 export const Contact = () => {
+  const [copied, setCopied] = useState(false);
+  const accraTime = useAccraTime();
   const root = useRef<HTMLElement>(null);
   const glow = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const coarse = useCoarsePointer();
 
   const email = CONTACT.find((link) => link.id === "email")?.href;
+  const address = email?.replace("mailto:", "");
+  const copyEmail = async () => {
+    if (!address) return;
+    try {
+      await navigator.clipboard.writeText(address);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard can be blocked; the address is also shown in the list below.
+    }
+  };
   const enquiry = email ? `${email}${email.includes("?") ? "&" : "?"}subject=Hello%20Hezekiah` : undefined;
   const whatsapp = CONTACT.find((link) => link.id === "whatsapp")?.href;
   // Details that have not been provided yet are simply not shown.
@@ -59,9 +84,7 @@ export const Contact = () => {
     <section id="contact" ref={root} className="section contact">
       {!reduced && !coarse ? <div ref={glow} className="contact__glow" aria-hidden="true" /> : null}
       <div className="container contact__inner">
-        <p className="eyebrow">
-          <b>07</b>Contact
-        </p>
+        <p className="eyebrow">Contact</p>
         <h2 className="display contact__title" aria-label="Let's make something matter.">
           {HEADLINE.map((line, index) => (
             <span key={line} className="contact__line" aria-hidden="true">
@@ -74,7 +97,7 @@ export const Contact = () => {
           <div className="contact__person">
             <img src="/photos/avatar.webp" width={56} height={56} alt="Hezekiah Asare" loading="lazy" decoding="async" />
             <p className="contact__text">
-              Have a project, an idea, or just want to say hello? Send me a message. I'd love to hear about it.
+              Have a project in mind, or just want to say hello? Send me a message and I'll get back to you.
             </p>
           </div>
 
@@ -84,12 +107,21 @@ export const Contact = () => {
                 Email me <ArrowUpRight size={18} aria-hidden="true" />
               </a>
             ) : null}
+            {address ? (
+              <button className="btn" type="button" onClick={copyEmail}>
+                {copied ? "Copied" : "Copy email"}
+                {copied ? <Check size={18} aria-hidden="true" /> : <Copy size={18} aria-hidden="true" />}
+              </button>
+            ) : null}
             {whatsapp ? (
               <a className="btn" href={whatsapp} target="_blank" rel="noopener noreferrer">
                 Chat on WhatsApp <ArrowUpRight size={18} aria-hidden="true" />
               </a>
             ) : null}
           </div>
+          <p className="sr-only" role="status" aria-live="polite">
+            {copied ? "Email address copied" : ""}
+          </p>
 
           <ul className="contact__links">
             {available.map((link) => (
@@ -108,7 +140,7 @@ export const Contact = () => {
 
       <footer className="footer container">
         <span>© {new Date().getFullYear()} Hezekiah Asare</span>
-        <span>Accra, Ghana</span>
+        <span>Accra, Ghana{accraTime ? `, ${accraTime} local time` : ""}</span>
       </footer>
     </section>
   );

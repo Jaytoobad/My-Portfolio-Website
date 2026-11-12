@@ -36,9 +36,9 @@ export const PROJECTS: readonly Project[] = [
     status: "live",
     url: "https://thestrandbrand.com",
     summary:
-      "An e-commerce experience for a wig and beauty brand, focused on product discovery, shopping, customer experience and order management.",
-    tags: ["E-commerce", "Frontend", "Payments", "Admin"],
-    stack: ["Supabase", "Paystack", "Vercel", "JavaScript", "AI-assisted development"],
+      "An online store for a wig and beauty brand, focused on product discovery, shopping, customer experience and order management.",
+    tags: ["Online store", "Frontend", "Payments", "Admin"],
+    stack: ["Supabase", "Paystack", "Vercel", "JavaScript", "Built with AI"],
     caseStudy: {
       overview:
         "The Strand Brand is a destination for premium wigs and hair solutions. The site is where customers discover products, shop and pay, and where the brand manages its orders.",
@@ -51,7 +51,7 @@ export const PROJECTS: readonly Project[] = [
         "Connected Supabase for products, customers and orders.",
         "Integrated Paystack payments, using Supabase Edge Functions to initialise and verify transactions.",
         "Built product and order workflows for managing the store behind the scenes.",
-        "Used AI-assisted development (Claude and Kilo Code) to plan, build and review changes.",
+        "Used AI tools (Claude and Kilo Code) to plan, build and review changes, with me deciding what shipped.",
       ],
       contributions: [
         "Frontend development",
@@ -59,12 +59,12 @@ export const PROJECTS: readonly Project[] = [
         "Supabase integration",
         "Paystack payment integration",
         "Product and order workflows",
-        "AI-assisted development",
+        "Building with AI tools",
       ],
       challenges: [
         {
           title: "Payments across the browser and the backend",
-          body: "Payments run through Supabase Edge Functions that initialise and verify Paystack transactions. Making them work reliably from the storefront meant handling cross-origin (CORS) requests carefully and keeping payment verification on the server side.",
+          body: "Payments run through Supabase Edge Functions that initialise and verify Paystack transactions. Making them work reliably from the storefront meant handling CORS requests carefully and keeping payment verification on the server side.",
         },
       ],
     },

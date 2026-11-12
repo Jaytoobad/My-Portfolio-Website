@@ -26,10 +26,10 @@ export const Stack = () => {
     <section id="stack" ref={root} className="section stack">
       <div className="container">
         <p className="eyebrow">
-          <b>06</b>Technology and workflow
+          Technology and workflow
         </p>
         <h2 className="display stack__title">
-          The tools, <em>honestly.</em>
+          What I use, and <em>how well.</em>
         </h2>
         <p className="stack__lede">
           Grouped by how I actually use them, not ranked by bars or percentages.

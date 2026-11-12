@@ -18,7 +18,7 @@ export const ImageSlot = ({ src, alt, label }: Props) => {
   return (
     <figure className="slot">
       {missing ? (
-        <div className="slot__placeholder" role="img" aria-label={`${label} — screenshot to be added`}>
+        <div className="slot__placeholder" role="img" aria-label={`${label}, screenshot to be added`}>
           <ImageOff size={20} aria-hidden="true" />
           <span>Screenshot to be added</span>
           <small>{label}</small>

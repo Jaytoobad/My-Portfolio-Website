@@ -17,7 +17,7 @@ export type ContactLink = {
 export const CONTACT: readonly ContactLink[] = [
   { id: "email", label: "Email", href: "mailto:jasonasare211@gmail.com", display: "jasonasare211@gmail.com" },
   // wa.me needs the international format: Ghana's leading 0 becomes 233.
-  { id: "whatsapp", label: "WhatsApp", href: "https://wa.me/233209948631", display: "+233 20 994 8631" },
+  { id: "whatsapp", label: "WhatsApp", href: "https://wa.me/233209948631?text=Hi%20Hezekiah%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk.", display: "+233 20 994 8631" },
   { id: "github", label: "GitHub", href: "https://github.com/Jaytoobad", display: "@Jaytoobad" },
   // TODO(contact): add the real LinkedIn profile URL. Links without an href are hidden on the site.
   { id: "linkedin", label: "LinkedIn" },
@@ -53,21 +53,21 @@ export const STACK: readonly StackGroup[] = [
     items: ["GSAP", "Three.js", "WebGL", "Adobe After Effects", "Lottie"],
   },
   {
-    name: "AI-assisted workflow",
+    name: "Working with AI",
     level: "workflow",
     note: "How I plan, prototype, build and review faster.",
-    items: ["Claude", "Kilo Code", "AI-assisted coding and prototyping tools"],
+    items: ["Claude", "Kilo Code", "AI coding and prototyping tools"],
   },
 ];
 
 export const EDUCATION = [
-  { place: "Ghana Communication Technology University", detail: "Diploma in Information Technology" },
+  { place: "Ghana Communication Technology University", detail: "Information Technology" },
   { place: "Pope John Senior High School and Minor Seminary", detail: "General Science" },
 ] as const;
 
 export const INTERESTS = [
   "Web development",
-  "AI-assisted software development",
+  "Software development with AI",
   "Digital experiences",
   "Motion design",
   "Creative technology",
