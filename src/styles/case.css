@@ -42,7 +42,7 @@
 }
 
 .case__title {
-  font-size: clamp(3rem, 11vw, 10rem);
+  font-size: clamp(3rem, 8.5vw, 7.5rem);
 }
 .case__title-mask {
   display: block;
@@ -62,7 +62,7 @@
 }
 .case__lead p {
   max-width: 40rem;
-  font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.6rem);
+  font-size: clamp(1.1rem, 0.9rem + 0.6vw, 1.35rem);
   line-height: 1.4;
 }
 

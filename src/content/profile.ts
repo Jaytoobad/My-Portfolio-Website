@@ -15,13 +15,12 @@ export type ContactLink = {
 };
 
 export const CONTACT: readonly ContactLink[] = [
-  // TODO(contact): add the real email address, e.g. href: "mailto:name@example.com"
-  { id: "email", label: "Email" },
-  // TODO(contact): add the real LinkedIn profile URL
-  { id: "linkedin", label: "LinkedIn" },
+  { id: "email", label: "Email", href: "mailto:jasonasare211@gmail.com", display: "jasonasare211@gmail.com" },
+  // wa.me needs the international format: Ghana's leading 0 becomes 233.
+  { id: "whatsapp", label: "WhatsApp", href: "https://wa.me/233209948631", display: "+233 20 994 8631" },
   { id: "github", label: "GitHub", href: "https://github.com/Jaytoobad", display: "@Jaytoobad" },
-  // TODO(contact): add a WhatsApp link, e.g. https://wa.me/233XXXXXXXXX
-  { id: "whatsapp", label: "WhatsApp" },
+  // TODO(contact): add the real LinkedIn profile URL. Links without an href are hidden on the site.
+  { id: "linkedin", label: "LinkedIn" },
 ];
 
 export type StackLevel = "working" | "learning" | "workflow";

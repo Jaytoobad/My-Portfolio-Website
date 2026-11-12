@@ -13,7 +13,7 @@
   gap: 1.5rem;
 }
 .about__title {
-  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
 }
 .about__text {
   max-width: 36rem;
@@ -72,7 +72,7 @@
 }
 .stack__title {
   margin-top: 1.5rem;
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(3rem, 6vw, 5rem);
 }
 .stack__lede {
   margin-top: 1.25rem;
@@ -143,5 +143,97 @@
   .stack__group {
     padding-right: 0;
     padding-bottom: 1.5rem;
+  }
+}
+
+/* Photos */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  align-items: start;
+  margin-top: clamp(3rem, 7vw, 6rem);
+}
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  background: var(--charcoal);
+  border: 1px solid var(--line);
+}
+.photo:nth-child(2) {
+  margin-top: clamp(1.5rem, 5vw, 4rem);
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: 112%;
+  margin-top: -6%;
+  object-fit: cover;
+  object-position: top;
+  will-change: transform;
+}
+
+/* How I work */
+.approach {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(4rem, 9vw, 8rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.approach__title {
+  margin-top: 1rem;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+}
+.approach__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(1.25rem, 3vw, 3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.approach__item > * {
+  margin: 0;
+}
+.approach__title em {
+  white-space: nowrap;
+}
+.approach__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-block: 1.25rem 1.75rem;
+  border-top: 1px solid var(--line);
+}
+.approach__num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--lime);
+}
+.approach__item h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+.approach__item p {
+  color: var(--grey);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .approach {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .approach__list {
+    grid-template-columns: 1fr;
   }
 }

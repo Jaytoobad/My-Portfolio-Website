@@ -61,7 +61,7 @@
 }
 
 .hero__title {
-  font-size: clamp(3.2rem, min(10.5vw, 14vh), 9.5rem);
+  font-size: clamp(3.2rem, min(8vw, 12vh), 7rem);
 }
 .hero__line {
   display: block;

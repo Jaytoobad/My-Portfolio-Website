@@ -3,6 +3,46 @@ import { gsap, useReducedMotion } from "../lib/motion";
 import { EDUCATION, INTERESTS } from "../content/profile";
 import "../styles/about.css";
 
+const PHOTOS = [
+  {
+    src: "/photos/portrait-tie.webp",
+    width: 626,
+    height: 1080,
+    alt: "Hezekiah Asare in a white shirt and black tie, wearing glasses and holding a phone",
+  },
+  {
+    src: "/photos/portrait-car.webp",
+    width: 608,
+    height: 760,
+    alt: "Hezekiah Asare looking into the camera in a tan collared shirt",
+  },
+  {
+    src: "/photos/portrait-shirt.webp",
+    width: 620,
+    height: 775,
+    alt: "Hezekiah Asare in a white shirt, looking down while holding a phone",
+  },
+] as const;
+
+const APPROACH = [
+  {
+    title: "The idea is mine",
+    body: "I start with a point of view: who it's for, how it should feel, what it should say. This portfolio began as my own written creative brief, from the colours to the sections to the rules about honesty.",
+  },
+  {
+    title: "AI is how I build faster",
+    body: "Claude and Kilo Code help me write, prototype and refactor quickly. I review what they produce and decide what stays.",
+  },
+  {
+    title: "Taste isn't automated",
+    body: "Choosing the typeface, the pacing, when to hold back and when to make something move. Those calls are human, and they're the part I care about most.",
+  },
+  {
+    title: "Everything gets tested",
+    body: "I check it in a real browser, on small screens and with reduced motion before I call anything done.",
+  },
+] as const;
+
 export const About = () => {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
@@ -18,6 +58,32 @@ export const About = () => {
         stagger: 0.08,
         scrollTrigger: { trigger: ".about__grid", start: "top 80%" },
       });
+
+      gsap.utils.toArray<HTMLElement>(".photo").forEach((photo, index) => {
+        gsap.from(photo, {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          ease: "expo.out",
+          delay: index * 0.1,
+          scrollTrigger: { trigger: ".photos", start: "top 85%" },
+        });
+        // A little drift at different speeds so the strip feels layered.
+        gsap.to(photo.querySelector("img"), {
+          yPercent: index === 1 ? -6 : 6,
+          ease: "none",
+          scrollTrigger: { trigger: photo, start: "top bottom", end: "bottom top", scrub: true },
+        });
+      });
+
+      gsap.from(".approach__item", {
+        opacity: 0,
+        y: 28,
+        duration: 0.8,
+        ease: "expo.out",
+        stagger: 0.1,
+        scrollTrigger: { trigger: ".approach__list", start: "top 85%" },
+      });
     }, root);
     return () => context.revert();
   }, [reduced]);
@@ -31,15 +97,15 @@ export const About = () => {
         <div className="about__grid">
           <div className="about__col">
             <h2 className="display about__title">
-              An IT professional growing into a <em>creative technologist.</em>
+              A curious builder from Accra, growing into a <em>creative technologist.</em>
             </h2>
             <p className="about__text">
-              I'm Hezekiah Asare, based in Ghana. I'm currently serving at the Lands Commission, where I'm exposed to IT
+              Hi, I'm Hezekiah. I'm based in Ghana and currently serving at the Lands Commission, where I'm exposed to IT
               operations and technology-related responsibilities.
             </p>
             <p className="about__text">
-              Alongside that, I build websites and interactive experiences, using AI-assisted workflows to move faster
-              while I keep learning the craft of motion, 3D and front-end engineering.
+              Outside of that, I design and build websites and interactive experiences. I'm still growing as a creative
+              technologist, and I'd rather show that honestly than pretend to be further along.
             </p>
           </div>
 
@@ -73,6 +139,39 @@ export const About = () => {
               </ul>
             </div>
           </div>
+        </div>
+
+        <div className="photos">
+          {PHOTOS.map((photo) => (
+            <figure key={photo.src} className="photo">
+              <img
+                src={photo.src}
+                width={photo.width}
+                height={photo.height}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
+
+        <div className="approach">
+          <div className="approach__head">
+            <p className="eyebrow">How I work</p>
+            <h3 className="display approach__title">
+              AI-assisted. <em>Human-directed.</em>
+            </h3>
+          </div>
+          <ol className="approach__list">
+            {APPROACH.map((item, index) => (
+              <li key={item.title} className="approach__item">
+                <span className="approach__num">{String(index + 1).padStart(2, "0")}</span>
+                <h4>{item.title}</h4>
+                <p>{item.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

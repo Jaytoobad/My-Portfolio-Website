@@ -13,7 +13,10 @@ export const Contact = () => {
   const coarse = useCoarsePointer();
 
   const email = CONTACT.find((link) => link.id === "email")?.href;
-  const enquiry = email ? `${email}${email.includes("?") ? "&" : "?"}subject=Project%20enquiry` : undefined;
+  const enquiry = email ? `${email}${email.includes("?") ? "&" : "?"}subject=Hello%20Hezekiah` : undefined;
+  const whatsapp = CONTACT.find((link) => link.id === "whatsapp")?.href;
+  // Details that have not been provided yet are simply not shown.
+  const available = CONTACT.filter((link) => link.href);
 
   useLayoutEffect(() => {
     if (reduced) return;
@@ -68,36 +71,35 @@ export const Contact = () => {
         </h2>
 
         <div className="contact__rest">
-          <p className="contact__text">
-            Have a project, an idea or a collaboration in mind? I'd like to hear about it.
-          </p>
+          <div className="contact__person">
+            <img src="/photos/avatar.webp" width={56} height={56} alt="Hezekiah Asare" loading="lazy" decoding="async" />
+            <p className="contact__text">
+              Have a project, an idea, or just want to say hello? Send me a message. I'd love to hear about it.
+            </p>
+          </div>
 
-          {enquiry ? (
-            <a className="btn btn--solid" href={enquiry}>
-              Start an enquiry <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-          ) : (
-            <span className="btn btn--solid btn--disabled" aria-disabled="true">
-              Enquiry link coming soon
-            </span>
-          )}
+          <div className="contact__actions">
+            {enquiry ? (
+              <a className="btn btn--solid" href={enquiry}>
+                Email me <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            ) : null}
+            {whatsapp ? (
+              <a className="btn" href={whatsapp} target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            ) : null}
+          </div>
 
           <ul className="contact__links">
-            {CONTACT.map((link) => (
+            {available.map((link) => (
               <li key={link.id}>
-                {link.href ? (
-                  <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
-                    <span>{link.label}</span>
-                    <span className="contact__value">
-                      {link.display ?? "Open"} <ArrowUpRight size={16} aria-hidden="true" />
-                    </span>
-                  </a>
-                ) : (
-                  <div className="contact__pending">
-                    <span>{link.label}</span>
-                    <span className="contact__value">Coming soon</span>
-                  </div>
-                )}
+                <a href={link.href} target={link.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                  <span>{link.label}</span>
+                  <span className="contact__value">
+                    {link.display ?? "Open"} <ArrowUpRight size={16} aria-hidden="true" />
+                  </span>
+                </a>
               </li>
             ))}
           </ul>

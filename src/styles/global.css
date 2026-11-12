@@ -35,7 +35,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   font-family: var(--font-body);
-  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  font-size: clamp(1rem, 0.94rem + 0.15vw, 1.05rem);
   line-height: 1.6;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;

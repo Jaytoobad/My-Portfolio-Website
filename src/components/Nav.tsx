@@ -35,8 +35,8 @@ export const Nav = () => {
   return (
     <header className={`nav${scrolled ? " nav--scrolled" : ""}${open ? " nav--open" : ""}`}>
       <div className="container nav__inner">
-        <a className="nav__brand" href="#top" onClick={close} aria-label="HA Hezekiah Asare">
-          <span className="nav__mark">HA</span>
+        <a className="nav__brand" href="#top" onClick={close} aria-label="Hezekiah Asare">
+          <img className="nav__avatar" src="/photos/avatar.webp" width={44} height={44} alt="" />
           <span className="nav__name">Hezekiah Asare</span>
         </a>
 

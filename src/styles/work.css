@@ -10,7 +10,7 @@
   margin-bottom: clamp(3rem, 8vw, 6rem);
 }
 .work__title {
-  font-size: clamp(2.8rem, 8vw, 7rem);
+  font-size: clamp(2.8rem, 6.2vw, 5.25rem);
   max-width: 14ch;
 }
 
@@ -48,7 +48,7 @@
   gap: 1rem;
 }
 .project__name {
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-size: clamp(2.2rem, 3.9vw, 3.4rem);
   transition: color 0.4s var(--ease-out);
 }
 .project:hover .project__name {

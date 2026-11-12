@@ -3,7 +3,7 @@ import { gsap, useReducedMotion } from "../lib/motion";
 import "../styles/statement.css";
 
 const STATEMENT =
-  "A website is more than a page. Design decides how it feels, technology decides how it behaves, interaction invites people in, and story gives them a reason to stay. I build at that intersection, shaping ideas into experiences that are considered, fast and alive, using modern tools and AI-assisted workflows to get from concept to something you can actually use.";
+  "A website is more than a page. Design decides how it feels, technology decides how it behaves, interaction invites people in, and story gives them a reason to stay. I build at that intersection, shaping ideas into experiences that are considered, fast and alive. I use AI to build faster, but the ideas, the taste and the decisions are mine.";
 
 const PILLARS = [
   { name: "Design", body: "Typography, space and light that give an idea a point of view." },
