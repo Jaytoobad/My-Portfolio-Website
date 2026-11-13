@@ -23,7 +23,7 @@
 
 .project {
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1.1fr) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) auto;
   gap: 1.5rem clamp(1.5rem, 3vw, 3rem);
   align-items: start;
   padding-block: clamp(2rem, 4vw, 3rem);
@@ -32,13 +32,6 @@
 }
 .project:hover {
   background: rgba(244, 240, 232, 0.025);
-}
-
-.project__index {
-  padding-top: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--grey);
 }
 
 .project__main {
@@ -168,11 +161,7 @@
 
 @media (max-width: 1000px) {
   .project {
-    grid-template-columns: 3rem minmax(0, 1fr);
-  }
-  .project__detail,
-  .project__actions {
-    grid-column: 2;
+    grid-template-columns: minmax(0, 1fr);
   }
   .project__actions {
     flex-direction: row;
