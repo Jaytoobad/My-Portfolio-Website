@@ -4,7 +4,7 @@ import { gsap, useCoarsePointer, useReducedMotion } from "../lib/motion";
 import { CONTACT } from "../content/profile";
 import "../styles/contact.css";
 
-const HEADLINE = ["Let's make", "something", "matter."] as const;
+const HEADLINE = ["Let’s make", "something", "matter."] as const;
 
 const useAccraTime = () => {
   const [time, setTime] = useState("");
@@ -85,7 +85,7 @@ export const Contact = () => {
       {!reduced && !coarse ? <div ref={glow} className="contact__glow" aria-hidden="true" /> : null}
       <div className="container contact__inner">
         <p className="eyebrow">Contact</p>
-        <h2 className="display contact__title" aria-label="Let's make something matter.">
+        <h2 className="display contact__title" aria-label="Let’s make something matter.">
           {HEADLINE.map((line, index) => (
             <span key={line} className="contact__line" aria-hidden="true">
               <span>{index === 2 ? <em>{line}</em> : line}</span>

@@ -241,3 +241,26 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* On phones the three portraits scroll sideways at a size you can actually see. */
+@media (max-width: 600px) {
+  .photos {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter, 1.25rem) * -1);
+    padding-inline: var(--gutter, 1.25rem);
+    scrollbar-width: none;
+  }
+  .photos::-webkit-scrollbar {
+    display: none;
+  }
+  .photo {
+    flex: 0 0 72%;
+    scroll-snap-align: center;
+  }
+  .photo:nth-child(2) {
+    margin-top: 0;
+  }
+}
